@@ -79,6 +79,15 @@ var update = function (modifier) {
   // if (ball passes computer paddle) {
   //    playerScore++;
   //    reset(); }
+  
+  if (playerScore == 10 || computerScore == 10) {
+    endGame();
+  }
+}
+
+var endGame = function () {
+  // TODO add text saying who won
+  // TODO eventually add a play again function
 }
 
 
