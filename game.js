@@ -7,18 +7,21 @@ document.body.appendChild(canvas);
 
 // objects of the game
 // speed in pixels per second
-// TODO fix 
+// TODO fix paddle positions 
 var playerPaddle = {
-  speed: 200, x:0, y:0
+  speed: 200, x:0, y:240
 };
 
 var computerPaddle = {
-  speed: 200, x:0, y:0
+  speed: 200, x:0, y:240
 };
 
 var ball = {
   speed: 200, x:0, y:0
 };
+
+var playerScore = 0;
+var computerScore = 0;
 
 // keyboard controls
 var keysDown = {};
@@ -30,4 +33,29 @@ addEventListener("keydown", function (e) {
 addEventListener("keyup", function (e) {
   delete keysDown[e.keyCode];
 }, false);
+
+// reset the field when player or computer scores
+var reset = function () {
+  playerPaddle.y = canvas.height / 2;
+  computerPaddle.y = canvas.height / 2;
+  ball.y = (Math.random() * (canvas.height - 50);
+  ball.x = canvas.width / 2;
+};
+
+// Update game objects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
