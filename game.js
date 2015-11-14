@@ -44,7 +44,17 @@ var reset = function () {
 
 // Update game objects
 
-
+var update = function (modifier) {
+  if (81 in keysDown) { // Player presses q key to move paddle up 
+    playerPaddle.y -= playerPaddle.speed * modifier;
+  }
+  
+  if (65 in keysDown) { // Player presses a key to move paddle down 
+    playerPaddle.y += playerPaddle.speed * modifier;
+  }
+  
+  
+}
 
 
 
