@@ -3,6 +3,22 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 document.body.appendChild(canvas);
 
+// bat image
+var batReady = false;
+var batImage = new Image();
+batImage.onload = function () {
+  batReady = true;
+};
+batImage.src = "assets/bat.png"
+
+// ball image
+var ballReady = false;
+var ballImage = new Image();
+ballImage.onload = function () {
+  ballReady = true;
+};
+ballImage.src = "assets/ball.png"
+
 // objects of the game
 // speed in pixels per second
 // TODO fix paddle positions 
@@ -51,7 +67,18 @@ var update = function (modifier) {
     playerPaddle.y += playerPaddle.speed * modifier;
   }
   
+  // TODO add collision here
+  // if (ball collides with bat) {
+  //    ball.x = -(speed) }
   
+  // TODO add scoring conditions
+  // if (ball passes player paddle) {
+  //    computerScore++;
+  //    reset(); }
+  
+  // if (ball passes computer paddle) {
+  //    playerScore++;
+  //    reset(); }
 }
 
 
