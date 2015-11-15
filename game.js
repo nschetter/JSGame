@@ -22,12 +22,12 @@ ballImage.src = "assets/ball.png"
 // objects of the game
 // speed in pixels per second
 // TODO fix paddle positions 
-var playerPaddle = {
-  speed: 200, x:0, y:240
+var playerBat = {
+  speed: 200, x:0, y:50
 };
 
-var computerPaddle = {
-  speed: 200, x:0, y:240
+var computerBat = {
+  speed: 200, x:585, y:50
 };
 
 var ball = {
@@ -50,9 +50,9 @@ addEventListener("keyup", function (e) {
 
 // reset the field when player or computer scores
 var reset = function () {
-  playerPaddle.y = canvas.height / 2;
-  computerPaddle.y = canvas.height / 2;
-  ball.y = (Math.random() * (canvas.height - 50);
+  playerBat.y = (canvas.height / 2) - 45;
+  computerBat.y = (canvas.height / 2) - 45;
+  ball.y = Math.random() * (canvas.height - 50)
   ball.x = canvas.width / 2;
 };
 
@@ -60,16 +60,18 @@ var reset = function () {
 
 var update = function (modifier) {
   if (81 in keysDown) { // Player presses q key to move paddle up 
-    playerPaddle.y -= playerPaddle.speed * modifier;
+    playerBat.y -= playerBat.speed * modifier;
   }
   
   if (65 in keysDown) { // Player presses a key to move paddle down 
-    playerPaddle.y += playerPaddle.speed * modifier;
+    playerBat.y += playerBat.speed * modifier;
   }
   
   // TODO add collision here
   // if (ball collides with bat) {
   //    ball.x = -(speed) }
+  
+  // TODO Also add paddle collision with top and bottom walls
   
   // TODO add scoring conditions
   // if (ball passes player paddle) {
@@ -83,16 +85,49 @@ var update = function (modifier) {
   if (playerScore == 10 || computerScore == 10) {
     endGame();
   }
+  
 }
+
+// Rendering objects
+var render = function() {
+  if (batReady) {
+    ctx.drawImage(batImage, playerBat.x, playerBat.y);
+    ctx.drawImage(batImage, computerBat.x, computerBat.y);
+  }
+  
+  if (ballReady) {
+    ctx.drawImage(ballImage, ball.x, ball.y);
+  }
+  
+  // Score tracker
+  ctx.font = "24px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  ctx.fillText("Player: " + playerScore + " " + "Computer: " + computerScore, 300, 5)
+};
+
+// main controller which gives us control over the frame rate
+var main = function () {
+  var now = Date.now();
+  var change = now - then;
+  
+  update(change / 1000);
+  render();
+  
+  then = now;
+  
+  requestAnimationFrame(main);
+};
 
 var endGame = function () {
   // TODO add text saying who won
-  // TODO eventually add a play again function
-}
+  // TODO eventually add a play again function and run the reset function
+};
 
-
-
-
+// Calls the functions that run the game
+var then = Date.now();
+reset();
+main();
 
 
 
