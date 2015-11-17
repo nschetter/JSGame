@@ -60,16 +60,18 @@ var reset = function () {
 
 var update = function (modifier) {
   if (81 in keysDown) { // Player presses q key to move paddle up 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     playerBat.y -= playerBat.speed * modifier;
   }
   
   if (65 in keysDown) { // Player presses a key to move paddle down 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);    
     playerBat.y += playerBat.speed * modifier;
   }
   
   // TODO add collision here
-  // if (ball collides with bat) {
-  //    ball.x = -(speed) }
+   if (ball.x == ) {
+     ball.x = -(speed) }
   
   // TODO Also add paddle collision with top and bottom walls
   
@@ -86,7 +88,7 @@ var update = function (modifier) {
     endGame();
   }
   
-}
+};
 
 // Rendering objects
 var render = function() {
