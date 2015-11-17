@@ -70,8 +70,8 @@ var update = function (modifier) {
   }
   
   // TODO add collision here
-   if (ball.x == ) {
-     ball.x = -(speed) }
+   // if (ball.x == ) {
+ //     ball.x = -(speed) }
   
   // TODO Also add paddle collision with top and bottom walls
   
